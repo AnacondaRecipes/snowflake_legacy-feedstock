@@ -1,0 +1,21 @@
+From 04c12f192257c3968654c0da5ba7f3e9405f8c86 Mon Sep 17 00:00:00 2001
+From: Lorenzo Pirritano <lpirritano@anaconda.com>
+Date: Thu, 2 May 2024 15:32:25 +0200
+Subject: [PATCH] add snowflake as module
+
+---
+ snowflake/__init__.py | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 snowflake/__init__.py
+
+diff --git a/snowflake/__init__.py b/snowflake/__init__.py
+new file mode 100644
+index 0000000..6e284c5
+--- /dev/null
++++ snowflake/__init__.py
+@@ -0,0 +1 @@
++# add snowflake as module
+\ No newline at end of file
+-- 
+2.39.1
+

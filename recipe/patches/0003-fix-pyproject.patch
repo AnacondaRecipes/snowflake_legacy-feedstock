@@ -1,0 +1,44 @@
+From 26829c2f184f85260f5ab9238cb342933203d93d Mon Sep 17 00:00:00 2001
+From: Lorenzo Pirritano <lpirritano@anaconda.com>
+Date: Thu, 2 May 2024 17:39:54 +0200
+Subject: [PATCH] fix pyproject
+
+---
+ pyproject.toml | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 577d510..3cb9c52 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -41,19 +41,21 @@ path = 'snowflake/_legacy/__init__.py'
+ 
+ [tool.hatch.build]
+ directory = '../../dist'
+-dev-mode-dirs = ['src']
+-sources = ['data', 'src']
++sources = ['.']
+ 
+ [tool.hatch.build.targets.wheel]
++packages = [
++    'snowflake',
++]
+ include = [
+-    'src/snowflake',
+-    'data/snowflake.pth',
++    'snowflake/',
++    'snowflake.pth',
+ ]
+ 
+ [tool.hatch.build.targets.sdist]
+ include = [
+-    'src/snowflake',
+-    'data/snowflake.pth',
++    'snowflake/',
++    'snowflake.pth',
+     'README.md',
+     'tests/',
+     'CHANGELOG.md',
+-- 
+2.39.1
+

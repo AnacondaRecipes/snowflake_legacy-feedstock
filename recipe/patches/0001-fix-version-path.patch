@@ -1,0 +1,25 @@
+From 27c421b13bc13badec58aa8d5b8824c5db27cb22 Mon Sep 17 00:00:00 2001
+From: Lorenzo Pirritano <lpirritano@anaconda.com>
+Date: Thu, 2 May 2024 15:10:30 +0200
+Subject: [PATCH] fix version path
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index f1ab033..577d510 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -37,7 +37,7 @@ classifiers = [
+ dynamic = ['version']
+ 
+ [tool.hatch.version]
+-path = 'src/snowflake/_legacy/__init__.py'
++path = 'snowflake/_legacy/__init__.py'
+ 
+ [tool.hatch.build]
+ directory = '../../dist'
+-- 
+2.39.1
+
