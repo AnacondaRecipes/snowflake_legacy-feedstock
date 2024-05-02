@@ -9,8 +9,8 @@ source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/snowflake_legacy-{{ version }}.tar.gz
   sha256: 37096bb0020a52d641683ac8a705122dcae4b79b45ad3289d115dd82ba102af5
   patches:
-    - patches/0002-add-snowflake-as-module.patch
-    - patches/0003-fix-pyproject.patch
+    - patches/0001-add-snowflake-as-module.patch
+    - patches/0002-fix-pyproject.patch
 
 build:
   number: 0
