@@ -1,2 +1,2 @@
-# snowflake._legacy
+# snowflake_legacy
 Snowflake legacy
