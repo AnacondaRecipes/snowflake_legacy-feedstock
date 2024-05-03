@@ -39,7 +39,7 @@ test:
   commands:
     - pip check
     - pytest tests
-    - # the file snowflake.pth must exist
+    # the file snowflake.pth must exist
     - test -e $SP_DIR/snowflake.pth               # [unix]   
     - if not exist %SP_DIR%\snowflake.pth exit 1  # [win]
 
