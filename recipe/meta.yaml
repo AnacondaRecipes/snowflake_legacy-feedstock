@@ -1,0 +1,59 @@
+{% set name = "snowflake_legacy" %}
+{% set version = "0.8.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 37096bb0020a52d641683ac8a705122dcae4b79b45ad3289d115dd82ba102af5
+  patches:
+    - patches/0001-fix-pyproject-paths.patch
+
+build:
+  number: 0
+  skip: true  # [py<38 or py>311]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+
+requirements:
+  build:
+    - patch       # [not win]
+    - m2-patch    # [win]
+  host:
+    - python
+    - hatchling
+    - pip
+  run:
+    - python
+
+test:
+  imports:
+    - snowflake
+    - snowflake._legacy
+  requires:
+    - pip
+    - pytest
+  source_files:
+    - tests
+  commands:
+    - pip check
+    - pytest tests
+    # the file snowflake.pth must exist
+    - test -e $SP_DIR/snowflake.pth               # [unix]   
+    - if not exist %SP_DIR%\snowflake.pth exit 1  # [win]
+
+about:
+  home: https://pypi.org/project/snowflake._legacy
+  license: Apache-2.0
+  license_family: Apache
+  summary: Snowflake legacy
+  description: Snowflake legacy
+  doc_url: https://docs.snowflake.com/developer-guide/snowflake-python-api/snowflake-python-overview
+  dev_url: https://pypi.org/project/snowflake._legacy
+
+extra:
+  recipe-maintainers:
+    - lorepirri
+  skip-lints:
+    - missing_license_file
