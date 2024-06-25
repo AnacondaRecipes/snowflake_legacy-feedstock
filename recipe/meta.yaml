@@ -1,5 +1,5 @@
 {% set name = "snowflake_legacy" %}
-{% set version = "0.8.0" %}
+{% set version = "0.10.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,8 +7,9 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 37096bb0020a52d641683ac8a705122dcae4b79b45ad3289d115dd82ba102af5
+  sha256: 94ebe66f9a45ac7c41f989c999fd36bf9dfaad15089565981e42aca6faef4b85
   patches:
+    # update 0.10.0: patch still needed
     - patches/0001-fix-pyproject-paths.patch
 
 build:
