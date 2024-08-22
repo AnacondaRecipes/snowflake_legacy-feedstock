@@ -13,7 +13,7 @@ source:
     - patches/0001-fix-pyproject-paths.patch
 
 build:
-  number: 0
+  number: 100
   skip: true  # [py<38 or py>311]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
