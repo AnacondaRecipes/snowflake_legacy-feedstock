@@ -13,6 +13,8 @@ source:
     - patches/0001-fix-pyproject-paths.patch
 
 build:
+  # Snowflake wishes to add this to their private channel prior to our adding it to main.
+  # Setting a high build number enables this package to overwrite their pre-released version.
   number: 100
   skip: true  # [py<38 or py>311]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
