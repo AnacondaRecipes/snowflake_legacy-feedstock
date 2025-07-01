@@ -1,5 +1,5 @@
 {% set name = "snowflake_legacy" %}
-{% set version = "1.0.0" %}
+{% set version = "1.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,16 +7,16 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2044661c79ba01841ab279c5e74b994532244c9d103224eba16eb159c8ed6033
+  sha256: 98f7d2b19128c53a20eb25731ba62849bbb2747c33a0ea54f340d0feac9d4bb0
   patches:
-    # update 1.0.0: patch still needed
+    # update 1.0.1: patch still needed
     - patches/0001-fix-pyproject-paths.patch
 
 build:
   # Snowflake wishes to add this to their private channel prior to our adding it to main.
   # Setting a high build number enables this package to overwrite their pre-released version.
   number: 100
-  skip: true  # [py<38 or py>311]
+  skip: true  # [py<39 or py>312]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
@@ -41,6 +41,7 @@ test:
     - tests
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
     - pytest tests
     # the file snowflake.pth must exist
     - test -e $SP_DIR/snowflake.pth               # [unix]   
