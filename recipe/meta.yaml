@@ -17,7 +17,7 @@ build:
   # Setting a high build number enables this package to overwrite their pre-released version.
   number: 100
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-  skip: true  # [py<310 or py>313]
+  skip: true  # [py<310 or py>314]
 
 requirements:
   host:
